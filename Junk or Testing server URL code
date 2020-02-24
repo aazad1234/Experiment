@@ -1,0 +1,71 @@
+package demo;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class deemm {
+	
+	 	public static WebDriver driver;
+	 	
+	 	 
+public static void main (String args[]) throws IOException 
+{
+
+		System.setProperty("webdriver.chrome.driver", "D:\\Aazad\\Selenium\\chromedriver_win32\\chromedriver.exe");
+
+		driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		
+		
+		driver.get("https://github.com");
+
+        List<WebElement> links = driver.findElements(By.tagName("a"));
+
+		List<WebElement> imageLinks = driver.findElements(By.tagName("img"));
+		System.out.println("");
+
+		Iterator<WebElement> imageIterator = imageLinks.iterator();
+
+		Iterator<WebElement> iterator = links.iterator();
+
+		List<String> values = new ArrayList<String>();
+
+		while (imageIterator.hasNext()) {
+		
+		WebElement imageElement = imageIterator.next();
+		values.add(imageElement.getAttribute("src"));
+		}
+		while (iterator.hasNext()) {
+
+		WebElement element = iterator.next();
+		values.add(element.getAttribute("href"));
+
+		}
+		boolean isexist= false;
+		
+		for (String S : values) 
+		{
+		String matchLink = "Testing Server images URL";
+		
+		if (S.contains(matchLink)) 
+
+		{
+			System.out.println(S);
+			isexist=true;
+		}
+		}
+		if(!isexist)
+			
+		System.out.println("No Test Server Link Found");
+		
+		System.out.println("All Link & Image URL :     "+values.toString());
+		//driver.close();
+		 }
+}
