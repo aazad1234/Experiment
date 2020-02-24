@@ -1,0 +1,49 @@
+package New;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class LoginScript {
+
+	
+	public static WebDriver Login_driver;
+	public static WebDriverWait wait;
+	public static String URL = "https://www.thetemplatedemo.com";
+	
+	public static void main(String args[]) throws Exception
+	{
+		main1("MyString");
+//		System.setProperty("webdriver.chrome.driver","D:\\Aazad\\Selenium\\chromedriver_win32\\chromedriver.exe");
+//		Login_driver =  new ChromeDriver();
+//		Login_driver.manage().window().maximize();
+		Login_driver.get(URL);
+		Loginjar.Login(Login_driver).click();
+		Loginjar.Emailfield(Login_driver).sendKeys("andriowatson@gmail.com");
+		Loginjar.Passwordfield(Login_driver).sendKeys("Testing@123");
+		Loginjar.LoginButton(Login_driver).click();
+		Login_driver.close();
+		System.out.println("Passed");
+		
+	}
+	
+	public static void main1(String str) throws Exception
+	{
+		
+		System.out.println("Starting new one");
+		System.setProperty("webdriver.chrome.driver","D:\\Aazad\\Selenium\\chromedriver_win32\\chromedriver.exe");
+		Login_driver =  new ChromeDriver();
+		Login_driver.manage().window().maximize();
+		Login_driver.get(URL);
+		Loginjar.Login(Login_driver).click();
+		Loginjar.Emailfield(Login_driver).sendKeys("andriowatson@gmail.com");
+		Loginjar.Passwordfield(Login_driver).sendKeys("Testing@123");
+		Loginjar.LoginButton(Login_driver).click();
+		Thread.sleep(5000);
+		Loginjar.Profile(Login_driver).click();
+		Loginjar.Logout(Login_driver).click();
+		
+	}
+	
+}
