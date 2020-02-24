@@ -1,0 +1,74 @@
+package New;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class Loginjar 
+{
+	public static WebElement Login (WebDriver wb)
+	{
+		WebElement wbl = wb.findElement(By.xpath(""));
+		return wbl;
+	}
+	
+	public static WebElement Emailfield (WebDriver wb)
+	{
+		WebElement wbl = wb.findElement(By.xpath(""));
+		return wbl;
+	}
+	
+	public static WebElement Passwordfield (WebDriver wb)
+	{
+		WebElement wbl = wb.findElement(By.xpath(""));
+		return wbl;
+	}
+	
+	public static WebElement LoginButton (WebDriver wb)
+	{
+		WebElement wbl = wb.findElement(By.xpath(""));
+		return wbl;
+	}
+	
+	public static String UserProfile (WebDriver wb)
+	{
+		String str = wb.findElement(By.xpath("")).getText();
+		return str;
+	}
+	
+	public static WebElement Profile (WebDriver wb)
+	{
+		WebElement wbl = wb.findElement(By.xpath(""));
+		return wbl;
+	}
+	
+	public static WebElement Logout (WebDriver wb)
+	{
+		WebElement wbl = wb.findElement(By.xpath(""));
+		return wbl;
+	}
+	
+	public static String Invalid_Email (WebDriver wb)
+	{
+		String str = wb.findElement(By.xpath("")).getText();
+		return str;
+	}
+	
+	public static String Invalid_loginCredential (WebDriver wb)
+	{
+		String str = wb.findElement(By.xpath("")).getText();
+		return str;
+	}
+	
+	public static String Blank_Email (WebDriver wb)
+	{
+		String str = wb.findElement(By.xpath("")).getCssValue("caret-color");
+		return str;
+	}
+
+	public static String Blank_Password (WebDriver wb)
+	{
+		String str = wb.findElement(By.xpath("")).getCssValue("caret-color");
+		return str;
+	}
+}
