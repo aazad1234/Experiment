@@ -1,0 +1,62 @@
+public void EmailVerification () throws Exception
+	{
+	System.setProperty("webdriver.gecko.driver", "Location\\geckodriver.exe");
+	Registration = new FirefoxDriver();
+	Registration.manage().window().maximize();
+
+	Registration.get("https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
+	Thread.sleep(2000);
+	System.out.println("");
+	System.out.println("Running Script: Email Verification");
+	System.out.println("");
+ 
+	RegistrationJar.MailUserField(Registration).sendKeys("E-Mail");
+	RegistrationJar.MailUNNextButton(Registration).click();
+	Thread.sleep(2000);
+	RegistrationJar.MailPasswordField(Registration).sendKeys("Password");
+	Thread.sleep(2000);
+	RegistrationJar.MailPDNextButton(Registration).click();
+	System.out.println("Waiting for Mail");
+	Thread.sleep(2000);
+	File src1=((TakesScreenshot)Registration).getScreenshotAs(OutputType.FILE);
+	FileUtils.copyFile(src1, new File("Z:\\Aazad\\Automation\\ScreenShot\\CityTrunk Automation//Confirmation Mail.png"));
+	
+	List<WebElement> email = Registration.findElements(By.xpath("//*[@class='yW']/span"));
+	
+	Registration.manage().timeouts().implicitlyWait(75, TimeUnit.SECONDS);
+	
+	for(WebElement emailsub : email)
+	{
+		
+	    if(emailsub.getText().equals("eDeveloperz") == true)
+	    {
+	    	emailsub.click();
+	    }
+	    else
+	    {
+	    	System.err.println("Email Not found");
+	    }
+	}
+	Thread.sleep(2000);
+	File src2=((TakesScreenshot)Registration).getScreenshotAs(OutputType.FILE);
+	FileUtils.copyFile(src2, new File("Z:\\Aazad\\Automation\\ScreenShot\\CityTrunk Automation//Confirmation Mail1.png"));
+	WebElement Verifyclick = Registration.findElement(By.xpath("//*[text()='Verify your email address']"));
+	Verifyclick.click();
+//	((JavascriptExecutor)Registration).executeScript("window.open('about:blank', '-blank')");
+//	// To switch to the new tab
+	Thread.sleep(2000);
+
+	ArrayList<String> tabs = new ArrayList<String>(Registration.getWindowHandles());
+	Registration.switchTo().window(tabs.get(1));
+	Thread.sleep(2000);
+	Registration.findElement(By.xpath("//*[text()='Verify']")).click();
+	File src3=((TakesScreenshot)Registration).getScreenshotAs(OutputType.FILE);
+	FileUtils.copyFile(src3, new File("Z:\\Aazad\\Automation\\ScreenShot\\CityTrunk Automation//Confirmation Mail.png"));
+	Thread.sleep(2000);
+
+	String SuccesfulMessage = Registration.findElement(By.xpath("//span[@class='heading']")).getText();
+	System.out.println("");
+	System.out.println("Message:       "+ SuccesfulMessage);
+	System.out.println("");
+	System.out.println("");
+	}
