@@ -1,0 +1,35 @@
+package RegistrationandLogin;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class RegistrationJar
+{
+	public static WebElement wbl;
+	
+	public static WebElement MailUserField (WebDriver wb)
+	{
+		wbl = wb.findElement(By.xpath("//input[@name='identifier']"));
+		return wbl;
+	}
+	
+	public static WebElement MailUNNextButton (WebDriver wb)
+	{
+		wbl = wb.findElement(By.xpath("//span[contains(text(),'Next')]"));
+		return wbl;
+	}
+	
+	public static WebElement MailPasswordField (WebDriver wb)
+	{
+		wbl = wb.findElement(By.xpath("//input[@name='password']"));
+		return wbl;
+	}
+	public static WebElement MailPDNextButton (WebDriver wb)
+	{
+		wbl = wb.findElement(By.xpath("//span[contains(text(),'Next')]"));
+		return wbl;
+	}
+	
+}
+
